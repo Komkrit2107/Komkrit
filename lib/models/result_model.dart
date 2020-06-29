@@ -17,6 +17,7 @@ class ResultModel {
   double gainLoss;
   double returnPC;
   double proportion;
+  double totalCost;
 
   ResultModel(
       {this.custID,
@@ -36,7 +37,9 @@ class ResultModel {
       this.marketValue,
       this.gainLoss,
       this.returnPC,
-      this.proportion});
+      this.proportion,
+      this.totalCost
+      });
 
   ResultModel.fromJson(Map<String, dynamic> json) {
     custID = json['CustID'];
@@ -48,20 +51,31 @@ class ResultModel {
     fundNameT = json['fundNameT'];
     fundNameE = json['fundNameE'];
     riskLevel = json['RiskLevel'];
-    balanceUnit = json['BalanceUnit'];
-    avgCostUnit = json['AvgCostUnit'];
+    balanceUnit = chekDouble(json['BalanceUnit']);
+    avgCostUnit = chekDouble(json['AvgCostUnit']);
     avgCost = chekDouble(json['AvgCost']);
     dataDate = json['DataDate'];
-    marketPrice = json['MarketPrice'];
-    marketValue = json['MarketValue'];
-    gainLoss = json['GainLoss'];
-    returnPC = json['ReturnPC'];
+    marketPrice = chekDouble(json['MarketPrice']);
+    marketValue = chekDouble(json['MarketValue']);
+    gainLoss = chekDouble(json['GainLoss']);
+    returnPC = chekDouble(json['ReturnPC']);
     proportion = chekDouble(json['Proportion']);
+    totalCost  = chekDouble(json['TotalCost']);
   }
 
-  double chekDouble(var value) {
+double  chekDouble(var value) {
     return value is int ? value.toDouble() : value;
   }
+
+
+static double checkDoubles(dynamic value) {
+    if (value is String) {
+      return double.parse(value);
+    } else {
+      return value;
+    }
+  }
+
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
@@ -83,6 +97,7 @@ class ResultModel {
     data['GainLoss'] = this.gainLoss;
     data['ReturnPC'] = this.returnPC;
     data['Proportion'] = this.proportion;
+    data['TotalCost'] = this.totalCost;
     return data;
   }
 }

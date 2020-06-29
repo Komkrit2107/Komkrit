@@ -7,6 +7,10 @@ class UserModel {
   String fULLNAME;
   String mSGCODE;
   String mSGDESC;
+  int mktId;
+  int userLevel;
+  String titleName;
+  String fullNamess;
 
   UserModel(
       {this.token,
@@ -16,7 +20,11 @@ class UserModel {
       this.uSERID,
       this.fULLNAME,
       this.mSGCODE,
-      this.mSGDESC});
+      this.mSGDESC,
+      this.mktId,
+      this.userLevel,
+      this.titleName,
+      this.fullNamess});
 
   UserModel.fromJson(Map<String, dynamic> json) {
     token = json['token'];
@@ -27,6 +35,10 @@ class UserModel {
     fULLNAME = json['FULLNAME'];
     mSGCODE = json['MSG_CODE'];
     mSGDESC = json['MSG_DESC'];
+    mktId = json['MktId'];
+    userLevel = json['User_Level'];
+    titleName = json['Title_Name'];
+    fullNamess = json['FullNamess'];
   }
 
   Map<String, dynamic> toJson() {
@@ -39,6 +51,10 @@ class UserModel {
     data['FULLNAME'] = this.fULLNAME;
     data['MSG_CODE'] = this.mSGCODE;
     data['MSG_DESC'] = this.mSGDESC;
+    data['MktId'] = this.mktId;
+    data['User_Level'] = this.userLevel;
+    data['Title_Name'] = this.titleName;
+    data['FullNamess'] = this.fullNamess;
     return data;
   }
 }

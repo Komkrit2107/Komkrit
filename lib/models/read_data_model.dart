@@ -43,7 +43,7 @@ class Result {
   double gainLoss;
   double returnPC;
   double proportion;
-
+  double totalcost;
   Result(
       {this.custID,
       this.amcCode,
@@ -62,7 +62,8 @@ class Result {
       this.marketValue,
       this.gainLoss,
       this.returnPC,
-      this.proportion});
+      this.proportion,
+      this.totalcost});
 
   Result.fromJson(Map<String, dynamic> json) {
     custID = json['CustID'];
@@ -83,6 +84,7 @@ class Result {
     gainLoss = json['GainLoss'];
     returnPC = json['ReturnPC'];
     proportion = json['Proportion'];
+    totalcost = json['Totalcost'];
   }
 
   Map<String, dynamic> toJson() {
@@ -105,6 +107,7 @@ class Result {
     data['GainLoss'] = this.gainLoss;
     data['ReturnPC'] = this.returnPC;
     data['Proportion'] = this.proportion;
+    data['Totalcost'] = this.totalcost;
     return data;
   }
 }
